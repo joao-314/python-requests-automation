@@ -1,0 +1,41 @@
+# Ignorar a pasta do ambiente virtual
+venv/
+.env
+
+# Ignorar arquivos de cache do Python
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+
+# Ignorar a pasta de relatórios (opcional, se não quiser commitar relatórios)
+reports/
+
+# Ignorar configurações do VS Code
+.vscode/
+
+# Ignorar arquivos de configuração local
+*.local
+
+# Ignorar arquivos de log
+*.log
+
+# Ignorar arquivos de banco de dados ou SQLite
+*.db
+*.sqlite3
+
+# Ignorar arquivos de ambiente
+.env
+.env.local
+.env.development
+.env.test
+.env.production
+
+# Ignorar arquivos de sistema
+.DS_Store
+Thumbs.db
+
+# Ignorar arquivos de IDE/Editor
+.idea/
+*.swp
+*.swo
