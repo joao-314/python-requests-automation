@@ -42,7 +42,7 @@ def test_create_post():
     # Valida se o ID é único
     assert response_data["id"] not in generated_ids, f"ID {response_data['id']} is not unique"
     generated_ids.append(response_data["id"])
-    print_validation(f"ID {response_data['i']} is unique") #Erro forçado
+    print_validation(f"ID {response_data['id']} is unique") #Erro forçado
 
     # Verifica se a resposta contém um ID único
     assert "id" in response_data, "Expected 'id' in the response, but it was not found"
