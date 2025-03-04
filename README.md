@@ -1,4 +1,4 @@
-# README.md para o Projeto PYTHON-REQUESTS-AUTOMATION
+# Projeto PYTHON-REQUESTS-AUTOMATION
 
 ## Python Requests Automation  
 Este é um projeto de automação de testes para APIs, utilizando Python, `requests` e `pytest`, focado em validar os endpoints de criação (`POST /posts`) e recuperação (`GET /posts`) de posts. A pipeline CI/CD foi configurada com GitHub Actions para execução automatizada e geração de relatórios.
@@ -45,12 +45,12 @@ Antes de configurar e executar o projeto localmente, certifique-se de ter instal
    ```bash
    python -m venv venv
 
-2. Ative o ambiente virtual:
-  Em Windows:
+2. Ative o ambiente virtual
+1.  Em Windows:
   ```bash
   python -m venv venv
 
-  Em macOs/Linux:
+2.  Em macOs/Linux:
   ```bash
   source venv/bin/activate
 
