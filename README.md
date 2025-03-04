@@ -51,8 +51,8 @@ Antes de configurar e executar o projeto localmente, certifique-se de ter instal
 
 ### 4.3 Instalar Dependências
 1. Instale as dependências listadas no requirements.txt:
-  ```bash
-  pip install -r requirements.txt
+   ```bash
+   pip install -r requirements.txt
 
 ## 5. Executando os Testes Localmente
 
