@@ -1,115 +1,93 @@
-# Projeto de Testes de API
+# README.md para o Projeto PYTHON-REQUESTS-AUTOMATION
 
-Este projeto contém testes automatizados para a API pública `https://jsonplaceholder.typicode.com/posts`. Os testes foram desenvolvidos em Python utilizando a biblioteca `requests` e o framework `pytest`.
+## Python Requests Automation  
+Este é um projeto de automação de testes para APIs, utilizando Python, `requests` e `pytest`, focado em validar os endpoints de criação (`POST /posts`) e recuperação (`GET /posts`) de posts. A pipeline CI/CD foi configurada com GitHub Actions para execução automatizada e geração de relatórios.
 
-## Funcionalidades
+---
 
-- **Testes para o endpoint GET /posts**:
-  - Valida o status code da resposta.
-  - Verifica se a resposta contém uma lista de posts.
-- **Testes para o endpoint POST /posts**:
-  - Gera dados aleatórios para o corpo da requisição.
-  - Valida o status code da resposta.
-  - Verifica se a resposta contém um ID único.
+## 1. Sobre o Projeto  
+O `PYTHON-REQUESTS-AUTOMATION` automatiza testes de integração para APIs, garantindo que os endpoints de criação e recuperação de posts funcionem corretamente. Os testes são escritos em Python com `pytest`, utilizando `requests` para fazer chamadas HTTP, e incluem geração de logs e relatórios HTML para análise.
 
-## Pré-requisitos
+### Principais Características  
+- Testa os endpoints `POST /posts` (criação de posts) e `GET /posts` (recuperação de posts).  
+- Utiliza `requests` para chamadas HTTP e `pytest` para estruturação e execução dos testes.  
+- Gera relatórios HTML para visualização dos resultados dos testes.  
+- Integração com GitHub Actions para CI/CD automatizado.  
 
-Antes de executar o projeto, certifique-se de que você possui os seguintes requisitos instalados:
+---
 
-- **Python 3.8 ou superior**:
-  - Verifique a instalação do Python executando no terminal:
+## 2. Descrição dos Arquivos Principais  
+- **`test_create_post.py`**: Contém o teste para o endpoint `POST /posts`, que gera dados aleatórios, faz uma requisição POST, e valida a resposta (status 201, unicidade de IDs, tipos de dados, e correspondência dos dados enviados e retornados).  
+- **`test_get_posts.py`**: Contém o teste para o endpoint `GET /posts`, que valida a lista de posts (status 200, estrutura da resposta, unicidade de IDs, tipos de dados, e presença de campos obrigatórios).  
+- **`requirements.txt`**: Lista as dependências do projeto, como `requests`, `pytest`, e `pytest-html` para geração de relatórios.  
+- **`ci_cd.yml`**: Arquivo de configuração da pipeline CI/CD no GitHub Actions para execução automatizada dos testes com `pytest`.  
+- **`settings.py` (em config/)**: Contém configurações do projeto, como o `BASE_URL` da API testada.  
+- **`data_generator.py` e `logger.py` (em utils/)**: Módulos utilitários para geração de dados aleatórios e log de informações/validações durante os testes.  
+
+---
+
+## 3. Pré-requisitos  
+Antes de configurar e executar o projeto localmente, certifique-se de ter instalado: 
+- **python3** (versão 3.13 recomendada).  
+- **pip** (gerenciado pelo Python).  
+- **Git** (para clonagem do repositório). 
+
+## 4. Configuração do Projeto  
+
+### 4.1 Clonar o Repositório  
+1. Clone o repositório do GitHub:  
+   ```bash
+   git clone https://github.com/joao-314/CYPRESS-AMAZON-TEST.git
+   cd CYPRESS-AMAZON-TEST
+
+### 4.2 Criar e Ativar um Ambiente Virtual
+1. Crie um ambiente virtual para isolar as dependências do projeto
+   ```bash
+   python -m venv venv
+
+2. Ative o ambiente virtual:
+  Em Windows:
+  ```bash
+  python -m venv venv
+
+  Em macOs/Linux:
+  ```bash
+  source venv/bin/activate
+
+### 4.3 Instalar Dependências
+1. Instale as dependências listadas no requirements.txt:
+  ```bash
+  pip install -r requirements.txt
+
+## 5. Executando os Testes Localmente
+
+### 5.1 Executar Testes com pytest
+1. Execute todos os testes no diretório tests/ usando pytest
+  ```bash
+  pytest tests/ -v --html=reports/report.html --self-contained-html
+
+2. Os resultados serão exibidos no terminal e o relatório HTML estará disponível em reports/report.html.
+
+## 6. Validação da Pipeline
+
+### 6.1 Verificar o Disparo Automático dos Testes
+1. Faça um push para o branch main ou abra um pull request para o branch main.
+
+2. Acesse a aba "Actions" no GitHub para verificar se o pipeline foi acionado automaticamente.
+
+### 6.2 Verificar Relatórios de Falhas
+1. Simule uma falha nos testes (ex.: altere o BASE_URL em config/settings.py para um valor inválido ou force um erro, como o comentário #Erro forçado em test_create_post.py).
+
+2. Verifique se o relatório HTML (reports/report.html)
+
+### 6.3 Verificar Paralelismo
+1. Para executar os testes em paralelo, ajuste o ci_cd.yml para usar uma ação como pytest-actions/annotate-failures:
     ```bash
-    python --version
-    ```
-  - Caso não tenha o Python instalado, baixe e instale a partir do [site oficial](https://www.python.org/downloads/).
+    name: Run pytest tests in parallel
+    uses: pytest-actions/annotate-failures@v3
+    with:
+      test-dir: tests/
+      parallel: true
+      report-file: reports/report.html
 
-- **Pip (gerenciador de pacotes do Python)**:
-  - O Pip geralmente já vem instalado com o Python. Verifique a instalação executando:
-    ```bash
-    pip --version
-    ```
-
-## Passos para Configuração e Execução
-
-Siga os passos abaixo para configurar o projeto e executar os testes.
-
-- **1. Clone o Repositório**
-
-Clone o repositório do projeto para o seu ambiente local:
-
-```bash
-git clone https://github.com/seu-usuario/projeto-api-tests.git
-```
-Navegue até a pasta do projeto:
-
-```bash
-cd projeto-api-tests
-```
-
-- **2. Crie e Ative um Ambiente Virtual (Opcional, mas Recomendado)**:
-Crie um ambiente virtual para isolar as dependências do projeto:
-
-```bash
-python -m venv venv
-```
-Ative o ambiente virtual:
-No Windows:
-
-```bash
-venv\Scripts\activate
-```
-
-No macOS/Linux:
-
-```bash
-source venv/bin/activate
-```
-
-- **3. Instale as Dependências**:
-Instale as bibliotecas necessárias listadas no arquivo requirements.txt:
-
-```bash
-pip install -r requirements.txt
-```
-
-As dependências instaladas incluem:
-
-requests: Para fazer requisições HTTP.
-pytest: Framework para execução de testes.
-pytest-html: Para gerar relatórios HTML dos testes.
-
-- **4. Executando os Testes**:
-Para executar todos os testes, use o seguinte comando:
-
-```bash
-python run_tests.py
-```
-
-Isso fará o seguinte:
-
-Executará os testes na pasta tests/.
-Exibirá os resultados no terminal.
-Gerará um relatório HTML na pasta reports/.
-
-- **5. Visualizando o Relatório HTML**:
-Após a execução dos testes, um relatório HTML será gerado na pasta reports/. Para visualizá-lo:
-
-Abra o arquivo report.html no navegador.
-
-Analise os resultados dos testes, incluindo quais passaram ou falharam.
-
-- **6. Executando Testes Individuais**:
-Se desejar executar um teste específico, use o comando pytest diretamente. Por exemplo:
-
-```bash
-pytest tests/test_get_posts.py -v
-```
-
-Ou:
-
-```bash
-pytest tests/test_create_post.py -v
-```
-
-
-A opção -v ativa o modo verboso, exibindo detalhes sobre a execução dos testes.
+2. Verifique se os testes são executados em paralelo e se o tempo de execução é reduzido.
