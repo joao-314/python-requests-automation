@@ -45,10 +45,14 @@ Antes de configurar e executar o projeto localmente, certifique-se de ter instal
    ```bash
    python -m venv venv
 
-2. Ative o ambiente virtual
-1.  Em Windows:
-  ```bash
-  python -m venv venv
+Ative o ambiente virtual:
+2.  Em Windows:
+   ```bash
+   python -m venv venv
+
+3.  Em Mac:
+   ```bash
+   source venv/bin/activate
 
 ### 4.3 Instalar Dependências
 1. Instale as dependências listadas no requirements.txt:
