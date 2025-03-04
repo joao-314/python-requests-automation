@@ -50,10 +50,6 @@ Antes de configurar e executar o projeto localmente, certifique-se de ter instal
   ```bash
   python -m venv venv
 
-2.  Em macOs/Linux:
-  ```bash
-  source venv/bin/activate
-
 ### 4.3 Instalar Dependências
 1. Instale as dependências listadas no requirements.txt:
   ```bash
