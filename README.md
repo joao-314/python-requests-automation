@@ -58,8 +58,8 @@ Antes de configurar e executar o projeto localmente, certifique-se de ter instal
 
 ### 5.1 Executar Testes com pytest
 1. Execute todos os testes no diretório tests/ usando pytest
-  ```bash
-  pytest tests/ -v --html=reports/report.html --self-contained-html
+   ```bash
+   pytest tests/ -v --html=reports/report.html --self-contained-html
 
 2. Os resultados serão exibidos no terminal e o relatório HTML estará disponível em reports/report.html.
 
@@ -77,10 +77,10 @@ Antes de configurar e executar o projeto localmente, certifique-se de ter instal
 
 ### 6.3 Verificar Paralelismo
 1. Para executar os testes em paralelo, ajuste o ci_cd.yml para usar uma ação como pytest-actions/annotate-failures:
-    ```bash
-    name: Run pytest tests in parallel
-    uses: pytest-actions/annotate-failures@v3
-    with:
+   ```bash
+   name: Run pytest tests in parallel
+   uses: pytest-actions/annotate-failures@v3
+   with:
       test-dir: tests/
       parallel: true
       report-file: reports/report.html
